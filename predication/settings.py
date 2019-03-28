@@ -25,7 +25,7 @@ SECRET_KEY = '(wyy%#ob2=2%d_vncsy#3*((m7!cs+4hp$m-kt#7=h2rj00a+n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://django-pote.herokuapp.com']
 
 
 # Application definition
