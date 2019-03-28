@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDICTION SYSTEM</title>
+    <!-- Core CSS - Include with every page -->
+    <link href= "{% static "assets/plugins/bootstrap/bootstrap.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/font-awesome/css/font-awesome.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/plugins/pace/pace-theme-big-counter.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/css/style.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/css/main-style.css" %}" rel="stylesheet" />
+    <!-- Page-Level CSS -->
+    <link href="{% static "assets/plugins/morris/morris-0.4.3.min.css" %}" rel="stylesheet" />
+   </head>
+<body>
+    <!--  wrapper -->
+    <div id="wrapper">
+        <!-- navbar top -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+<!--                     <img src="{% static "assets/img/icon.jpg" %}" alt="" />
+                   -->          <a class="navbar-brand" href="/predict" style="margin-top: -10px; color: white;">
+<!--                     <img src="{% static "assets/img/icon.jpg" %}" alt="" />
+                   -->                  <h1 ><I><B>PREDICTION</h1><H2 style="margin-left:90% "> system</B></I>
+                  <!-- <img src="assets/img/logo.png" alt="" /> -->
+                </a>
+                  <!-- <img src="assets/img/logo.png" alt="" /> -->
+                
+            </div>
+            <!-- end navbar-header -->
+            <!-- navbar-top-links -->
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- main dropdown -->
+                
+
+                
+
+                
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/predict/user">
+                        <i class="fa fa-user fa-3x"></i>
+                    </a>
+                    <!-- dropdown user-->
+                    <!-- <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        </li>
+                    </ul> -->
+                    <!-- end dropdown-user -->
+                </li>
+                <!-- end main dropdown -->
+            </ul>
+            <!-- end navbar-top-links -->
+
+        </nav>
+        <!-- end navbar top -->
+
+        <!-- navbar side -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <!-- sidebar-collapse -->
+            <div class="sidebar-collapse">
+                <!-- side-menu -->
+                <ul class="nav" id="side-menu">
+                  
+                    <li class="sidebar-search" style="padding-bottom:10%; margin-top: 8%;">
+                        <!-- search section-->
+                    <form action="collage" method="POST">
+                         {% csrf_token %}
+                         {{ form }}
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search for collage" required name="clg">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                        <!--end search section-->
+                    </li>
+                    <li class="selected">
+                        <a href="/predict"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                    </li>
+                    
+                     <li>
+                        <a href="/predict "><i class="fa fa-flask fa-fw"></i>List of Collages</a>
+                    </li>
+                    <li>
+                        <a href="/predict/tfws_list"><i class="fa fa-table fa-fw"></i>TFWS Predication</a>
+                    </li>
+                    <li>
+                        <a href="/predict/form"><i class="fa fa-edit fa-fw"></i>Forms</a>
+                    </li>
+                     <li>
+                        <a href="/predict/inform"><i class="fa fa-edit fa-fw"></i>
+                        Manual
+
+                        </a>
+                    </li>
+
+                    
+                </ul>
+                <!-- end side-menu -->
+            </div>
+            <!-- end sidebar-collapse -->
+        </nav>
+        <!-- end navbar side -->
+        <!--  page-wrapper -->
+        <div id="page-wrapper">
+
+            <!-- <div class="row">
+                Page Header
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                End Page Header
+            </div> -->
+
+            
+            <div class="row" style="padding-top: 5%;">
+                <div class="col-lg-6">
+                    <!-- Notifications-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Category Shortcuts
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Category Name</th>
+                                            <th>Shortcut Used</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PWD</td>
+                                            <td>Persons with Disabilities</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PWDC</td>
+                                            <td>Combined for (PWD1,PWD2,PWD3)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DEF</td>
+                                            <td>Defence</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GOPEN</td>
+                                            <td>General OPEN</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LOPEN</td>
+                                            <td>Ladies OPEN</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GOBC</td>
+                                            <td>General Other Backword Class</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LOBC</td>
+                                            <td>Ladies Other Backword Class </td>
+                                        </tr>
+                                        <tr>
+                                            <td>GSC</td>
+                                            <td>General Schedule Cast</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LSC</td>
+                                            <td>Ladies Schedule Cast</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GST</td>
+                                            <td>General Schedule Tribes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LST</td>
+                                            <td>Ladies Schedule Tribes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GVJNT</td>
+                                            <td>General Vimukt Jati</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LVJNT</td>
+                                            <td>Ladies Vimukt Jati</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GNTA</td>
+                                            <td>General Nomadic Tribes 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LNTA</td>
+                                            <td>Ladies Nomadic Tribes 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GNTB</td>
+                                            <td>General Nomadic Tribes 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LNTB</td>
+                                            <td>Ladies Nomadic Tribes 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GNTC</td>
+                                            <td>General Nomadic Tribes 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LNTC</td>
+                                            <td>Ladies Nomadic Tribes 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GNTD</td>
+                                            <td>General Nomadic Tribes 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>LNTD</td>
+                                            <td>Ladies Nomadic Tribes 4</td>
+                                        </tr>
+                                                                               
+
+                          
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Notifications-->
+                </div>
+                <div class="col-lg-6">
+                    <!-- Notifications-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Branch Shortcuts
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Shortcut Used</th>
+                                            <th>Branch Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>CSE</td>
+                                            <td>Computer Science And Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CE</td>
+                                            <td>Computer Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EE</td>
+                                            <td>Electrical Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CER</td>
+                                            <td>Chemical Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHE</td>
+                                            <td>Chemical Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CPE</td>
+                                            <td>Chemical  Premises </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CIV</td>
+                                            <td>Civil Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EEE</td>
+                                            <td>Electronics And Electrical  Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ECE</td>
+                                            <td>Electronics And Communication </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EIE</td>
+                                            <td>Electronics And Instrumentation </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ECM</td>
+                                            <td>Electronics And Computer Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>INS</td>
+                                            <td>Instrumentation Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>FPT</td>
+                                            <td>Food Processing Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>IT</td>
+                                            <td>Information Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>IST</td>
+                                            <td>Instrumentation And Engineering Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>MEC</td>
+                                            <td>Mechanical Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>PE</td>
+                                            <td>Production Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>TT</td>
+                                            <td>Textile Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EPD</td>
+                                            <td>Electronics Product Design </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EE</td>
+                                            <td>Electrical Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CT</td>
+                                            <td>Computer Technology </td>
+                                        </tr>
+                                        <tr>
+                                            <td>EXTC</td>
+                                            <td>Electronics And Telecommunication Engg </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CST</td>
+                                            <td>Computer Science And Technology </td>
+                                        </tr>
+                                        
+
+                          
+                          
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Notifications-->
+                </div>
+                    <!--End Notifications-->
+                </div>
+                                        
+
+                        
+
+                    </div>
+                    <!--End Chat Panel Example-->
+                </div>
+            </div>
+
+
+         
+
+
+        </div>
+        <!-- end page-wrapper -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="assets/plugins/jquery-1.10.2.js"></script>
+    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="assets/plugins/pace/pace.js"></script>
+    <script src="assets/scripts/siminta.js"></script>
+    <!-- Page-Level Plugin Scripts-->
+    <script src="assets/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/plugins/morris/morris.js"></script>
+    <script src="assets/scripts/dashboard-demo.js"></script>
+
+</body>
+
+</html>
